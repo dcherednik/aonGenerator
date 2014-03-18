@@ -48,7 +48,7 @@ options =
     ]
 
 samplesPS = 8000
-bitrate = 8
+bitrate = 16
 
 header = WAVEHeader 1 samplesPS bitrate Nothing
 
