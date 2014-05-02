@@ -64,7 +64,7 @@ sound freq samples len volume = take (round $ len * (fromIntegral samples)) $
                          map sin [0.0, (freq * 2 * pi / (fromIntegral samples))..]
 
 sample :: Double -> Double -> [Int32]
-sample f1 f2 = zipWith (+) (sound f1 samplesPS lenght (maxBound `div` 2)) (sound f2 samplesPS lenght (maxBound `div` 2))
+sample f1 f2 = zipWith (+) (sound f1 samplesPS lenght (maxBound `div` 8)) (sound f2 samplesPS lenght (maxBound `div` 8))
     where lenght = 0.04
 
 generator :: [(Double,Double)] -> [[Int32]] -- play two tones at once
@@ -78,7 +78,7 @@ repDup (x:xs) = if (x == head xs) then x : repN : (repDup $ tail xs) else x : (r
      where repN = 10
 
 encode :: [Int] -> [Int]
-encode n = cycle $ startN : repDup n
+encode n = cycle $ startN : repDup n 
      where startN = 11 
 
 prepareTones :: [Int] -> [(Double,Double)]
